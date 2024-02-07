@@ -30,13 +30,10 @@ Feature: Pokemon api
       | weight          | 905       |
     And "19" fields are present in the data
 
-  # this scenario will fail, count returned is 1292
-  # but after some experiments it appears the maximum
-  # number is 1275
   Scenario: Check the number of pokemons
     Given this api option "/pokemon"
     When the user GET request is sent
     Then we should receive a "200" response
     And the following data is returned
       | Field | Value |
-      | count | 1275  |
+      | count | 1292  |
