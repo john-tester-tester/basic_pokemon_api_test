@@ -3,11 +3,7 @@ Feature: Pokemon api
   Background: Set base URL
     Given a base URL "https://pokeapi.co/api/v2"
 
-# I found one duplication in this document page https://pokeapi.co/docs/v2
-# for example, location area appears in
-# https://pokeapi.co/docs/v2#locations-section and https://pokeapi.co/docs/v2#pokemon-section
-# the api tested below does not have duplicates, so, the number of tests may differ between this test
-# and document page https://pokeapi.co/docs/v2
+# document page https://pokeapi.co/docs/v2
   Scenario: Check the content and the number of api methods available
     Given the base URL is valid
     When the user GET request is sent
@@ -28,7 +24,7 @@ Feature: Pokemon api
       | base_experience | 267       |
       | name            | charizard |
       | weight          | 905       |
-    And "19" fields are present in the data
+    And "20" fields are present in the data
 
   Scenario: Check the number of pokemons
     Given this api option "/pokemon"
@@ -36,4 +32,4 @@ Feature: Pokemon api
     Then we should receive a "200" response
     And the following data is returned
       | Field | Value |
-      | count | 1292  |
+      | count | 1304  |

@@ -2,7 +2,6 @@ import os
 
 import requests
 from behave import *
-from ordered_set import OrderedSet
 
 
 @given('a base URL "{common_url_string}"')
@@ -84,8 +83,10 @@ def check_json_response_should_match_values_in_the_table(context):
                                                                           f"actual value {actual_value}")
                 actual_keys.append(actual_key)
 
-        assert OrderedSet(expected_values.keys()) == OrderedSet(actual_keys), (f"Error: expected field names {OrderedSet(expected_values.keys())}, "
-                                                                               f"actual field names {OrderedSet(actual_keys)}")
+        sorted_actual_keys = sorted(actual_keys)
+        sorted_expected_keys = sorted(expected_values.keys())
+        assert sorted_expected_keys == sorted_actual_keys, (f"Error: expected field names {sorted_expected_keys}, "
+                                                                               f"actual field names {sorted_actual_keys}")
     else:
         assert False, f"Error: get response is empty"
 
@@ -94,3 +95,10 @@ def check_json_response_should_match_values_in_the_table(context):
 def check_json_response_contains_the_correct_number_of_fields(context, expected_number_of_fields):
     assert expected_number_of_fields == str(context.number_of_fields_returned), (f"Error: expected number of fields {expected_number_of_fields}, "
                                                                                  f"actual number of fields {context.number_of_fields_returned}")
+
+if __name__ == '__main__':
+    from behave import __main__ as behave_executable
+    # adjust this directory base on which folder this project has been placed in.
+    #so in this case I place my git projects in C:\Dev_git_projects
+    os.chdir(r'C:\Dev_git_projects\basic_pokemon_api_test\features')
+    behave_executable.main(None)
