@@ -46,18 +46,18 @@ def check_json_response_should_match_values_in_the_expected_file(context, expect
     else:
         with open(expected_result_file, "r") as import_file:
             lines = import_file.readlines()
-            number_of_entries = 0
+            number_of_fields = 0
             for expected_item, (actual_value, actual_path) in zip(lines, json_response.items()):
                     expected_value, expected_path = str(expected_item).split('\t')
                     expected_value = str(expected_value).strip().replace('"','')
                     expected_path = str(expected_path).strip().replace('"','')
                     assert expected_value == actual_value, f"Error: expected value {expected_value}, actual value {actual_value}"
                     assert expected_path == actual_path, f"Error: expected path {expected_path}, actual path {actual_path}"
-                    number_of_entries += 1
+                    number_of_fields += 1
 
-            assert number_of_entries == int(
+            assert number_of_fields == int(
                 expected_number_of_results), (f"Error: incorrect number of apis returned {expected_number_of_results}, "
-                                              f"actual number returned {number_of_entries}")
+                                              f"actual number returned {number_of_fields}")
 
 
 @then('the following data is returned')
