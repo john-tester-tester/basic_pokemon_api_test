@@ -32,4 +32,4 @@ Feature: Pokemon api
     Then we should receive a "200" response
     And the following data is returned
       | Field | Value |
-      | count | 1304  |
+      | count | 1302  |
