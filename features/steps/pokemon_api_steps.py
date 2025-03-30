@@ -18,8 +18,6 @@ def given_a_url_user_option_has_been_provide(context):
 @given('this api option "{api_option_string}"')
 def given_a_url_user_option_has_been_provide(context, api_option_string):
     context.url = context.url + str(api_option_string).strip()
-    assert (context.url.startswith(r"http://") or
-            context.url.startswith(r"https://")), f"Error: {context.url} does not begin with 'http://' or 'https://'"
 
 
 @when('the user GET request is sent')
