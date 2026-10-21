@@ -53,8 +53,6 @@ def check_json_response_should_match_values_in_the_expected_file(context, expect
                     assert expected_path == actual_path, f"Error: expected path {expected_path}, actual path {actual_path}"
                     number_of_fields += 1
 
-            print(number_of_fields)
-
             assert number_of_fields == int(
                 expected_number_of_results), (f"Error: incorrect number of apis returned {expected_number_of_results}, "
                                               f"actual number returned {number_of_fields}")
