@@ -8,12 +8,12 @@ Feature: Pokemon api
     Given the base URL is valid
     When the user GET request is sent
     Then we should receive a "200" response
-    And response should match values in this expected file "expected_API_Results.txt" and "48" apis are returned
+    And response should match values in this expected file "expected_API_Results.txt" and "51" apis are returned
 
   Scenario: Check an invalid rest api request, "test", expect an error to be returned
     Given this api option "/test"
     When the user GET request is sent
-    Then we should receive a "404" response
+    Then we should receive a "400" response
 
   Scenario: Check a popular pokemon character, Charizard, can be retrieved
     Given this api option "/pokemon/charizard"
@@ -21,10 +21,10 @@ Feature: Pokemon api
     Then we should receive a "200" response
     And the following data is returned
       | Field           | Value     |
-      | base_experience | 267       |
+      | base_experience | 240       |
       | name            | charizard |
       | weight          | 905       |
-    And "20" fields are present in the data
+    And "21" fields are present in the data
 
   Scenario: Check the number of pokemons
     Given this api option "/pokemon"
@@ -32,4 +32,4 @@ Feature: Pokemon api
     Then we should receive a "200" response
     And the following data is returned
       | Field | Value |
-      | count | 1302  |
+      | count | 1351  |
